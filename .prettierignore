@@ -1,0 +1,58 @@
+# Dependencies
+node_modules
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Build outputs
+.output
+out
+dist
+build
+.vercel
+.turbo
+.vinxi
+.nitro
+
+# Cache
+.cache
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Database
+data
+*.db
+*.sqlite
+*.sqlite3
+drizzle
+
+# Generated files
+*.d.ts
+!src/**/*.d.ts
+src/routeTree.gen.ts
+src/paraglide
+
+# Public assets
+public
+
+# Config files that shouldn't be formatted
+.prettierrc
+.prettierrc.*
+prettier.config.*
+
+# Other
+coverage
+.DS_Store
+
+# Agent/skill files
+.claude
+.agents
+.codex
+.cursor
+
+# shadcn/ui components (auto-generated)
+src/components/ui

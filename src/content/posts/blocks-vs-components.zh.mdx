@@ -1,0 +1,39 @@
+export const meta = {
+  title: 'Blocks 与 Components:改版后留下的是什么',
+  description:
+    'ShipAny Next 的核心架构切分——可抛弃的 block 读取文案并装配内容,耐用的 component 只渲染传入的 props。',
+  created_at: '2026-05-28',
+  author_name: 'ShipAny 团队',
+  author_image: '/logo.png',
+};
+
+每个模板都宣称"轻松定制",然后让你为了改一句标题翻遍十二个文件。ShipAny Next 用一条规则避免这种局面:
+
+> 读取翻译文案的文件是 **block**,所有内容都通过 props 传入的文件是 **component**。
+
+## Block 是可抛弃的
+
+Block 放在 `src/blocks/`,是零配置的页面区块——`<Hero />`、`<Pricing />`、`<Footer />`。每个 block 读取 i18n 文案,组装内容配置,再传给 component。它们是演示素材:真正开始项目时,删掉它们,写你自己的。
+
+```tsx
+// src/blocks/header.tsx — block:读 i18n,装配 component
+export async function Header() {
+  const t = await getTranslations('landing');
+  const navLinks = [{ href: '/#features', label: t('nav.features') }];
+  return <SiteHeader navLinks={navLinks} />;
+}
+```
+
+## Component 是耐用的
+
+Component 放在 `src/components/`,永远不读翻译。`SiteHeader`、`PricingTable`、`AppSidebar`——所有内容都来自 props。它们不知道你的应用叫什么、文案是什么、语言是什么,这正是它们能挺过每一次改版的原因。
+
+## 为什么这个切分重要
+
+当你改版或基于模板开新项目时:
+
+1. **保留** `src/components/*` —— 底盘。
+2. **重写** `src/blocks/*` —— 内容装配层。
+3. **重写**喂给 block 的翻译 JSON 文件。
+
+页面文件本身始终很小——`page.tsx` 是纯组合,一摞 block 而已。重做整个落地页只需要动 block 和 JSON,永远不碰基础组件。这个切分不是表面功夫:它让定制变成"重写意图",而不是和别人的设计决策搏斗。

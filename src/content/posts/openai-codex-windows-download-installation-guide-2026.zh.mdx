@@ -1,0 +1,167 @@
+export const meta = {
+  title:
+    '【2026最新】OpenAI Codex下载与安装教程：AI编程神器的Windows保姆级使用指南',
+  description:
+    'OpenAI Codex Windows 版下载安装与使用教程，涵盖桌面应用、VS Code 插件、CLI、API Key 登录及常见问题。',
+  created_at: '2026-08-14',
+  author_name: 'Codex 中文网',
+  author_image: '/codexdown/icon.png',
+  image: 'https://upload.maynor1024.live/file/1786695092478_01.png',
+};
+
+> Codex 软件中文版下载地址：[https://pan.quark.cn/s/0f1763fe2ac9?pwd=rTQw#/list/share](https://pan.quark.cn/s/0f1763fe2ac9?pwd=rTQw#/list/share)
+
+Codex 是 OpenAI 开发的一款 AI 编程智能体（AI agent），是目前 AI 编程产品体系的一个重要组成部分。它不仅能提供代码，还能真正参与实际的项目开发过程，执行更复杂的系统操作。
+
+Codex 可以深入理解项目上下文，根据真实场景下的代码库处理较复杂的开发任务。它会读取项目文件，分析各个模块的依赖关系，按照自然语言指令修改多个文件、编写或重构代码、查找并修复 Bug，还可以执行命令、运行测试，并根据测试结果继续优化代码。开发人员可以直接把开发任务作为一个完整项目交给 Codex，而不必先拆解成一组细碎步骤，从而大幅提升编程效率。
+
+对于 Windows 用户来说，Codex 提供了多种使用方式，可以根据开发习惯和使用场景选择。不管是希望通过图形界面迅速上手，在 IDE 中进行日常开发，还是在命令行环境下运行自动化脚本，都可以使用 Codex 解决相应问题。
+
+## 下载 Codex（2026 最新）
+
+本文提供 Windows 平台 2026 年最新 Codex v26.623.19656.0 版本安装包，下载地址：
+
+[https://pan.quark.cn/s/0f1763fe2ac9?pwd=rTQw#/list/share](https://pan.quark.cn/s/0f1763fe2ac9?pwd=rTQw#/list/share)
+
+下载链接包含以下内容：
+
+- **Codex Installer.exe**：官方安装方式，通过 Microsoft Store 下载并安装。
+- **OpenAI.Codex_26.623.19656.0_amd64.Msix**：从 Microsoft Store 提取的安装包，适用于 AMD64 架构的 Windows 系统。
+- **OpenAI.Codex_26.623.19656.0_arm64.Msix**：从 Microsoft Store 提取的安装包，适用于 ARM64 架构的 Windows 系统。
+
+如果不知道如何确定电脑架构，请参考下方常见问题解答。
+
+## 安装 Codex（三种方式）
+
+### 1. 以桌面应用形式安装
+
+本文以在 AMD64 架构的 Windows 电脑中使用 `.Msix` 安装包为例。此方法适合访问 Microsoft Store 存在网络问题的用户；如能正常访问 Microsoft Store，也可以下载并双击 `Codex Installer.exe` 安装。
+
+1. 下载 `.Msix` 安装包，双击 `OpenAI.Codex_26.623.19656.0_amd64.Msix` 开始安装。
+
+![双击 Codex AMD64 Msix 安装包](https://upload.maynor1024.live/file/1786695092478_01.png)
+
+2. 根据 Microsoft Store 应用的默认规则，安装包通常会安装在系统盘（如 C 盘）。如需更改安装位置，请参考下方常见问题解答，然后点击“安装”。
+
+![点击安装 Codex](https://upload.maynor1024.live/file/1786695120045_02.png)
+
+3. 等待安装进度条到达 100%。
+
+![等待 Codex 安装完成](https://upload.maynor1024.live/file/1786695125609_03.png)
+
+4. 安装完成后，安装程序会自动关闭并打开 Codex 窗口。
+
+![Codex 桌面应用安装完成](https://upload.maynor1024.live/file/1786695127208_04.png)
+
+### 2. 以插件形式安装
+
+下面以 Visual Studio Code 为例安装 Codex 插件。
+
+1. 打开 VS Code，点击左侧扩展按钮。
+
+![打开 VS Code 扩展页面](https://upload.maynor1024.live/file/1786695135706_05.png)
+
+2. 在扩展页面搜索 Codex，认准 OpenAI 提供的版本，然后点击安装。
+
+![搜索并安装 OpenAI Codex 扩展](https://upload.maynor1024.live/file/1786695140872_06.png)
+
+3. 等待 VS Code 完成 Codex 扩展安装。
+
+![等待 VS Code 安装 Codex](https://upload.maynor1024.live/file/1786695145433_07.png)
+
+4. 安装完成后，VS Code 右上角会出现 OpenAI 图标。点击图标即可打开 Codex 页面，也可以从“聊天”进入 Codex 聊天界面。
+
+![在 VS Code 中打开 Codex](https://upload.maynor1024.live/file/1786695148585_08.png)
+
+### 3. 以 CLI 命令行形式安装
+
+可以通过以下命令安装 Codex CLI：
+
+```powershell
+# Windows PowerShell
+powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
+
+# 已安装 Node.js 时，也可以使用 npm
+npm install -g @openai/codex
+```
+
+macOS 用户还可以使用 Homebrew：
+
+```bash
+brew install --cask codex
+```
+
+## 登录 Codex
+
+下面以无订阅计划且没有充值过的 OpenAI 账号，通过 API Key 登录 Codex 桌面软件为例。IDE 插件和 CLI 命令行的认证方式可参考同样的流程。
+
+1. 打开 OpenAI 登录页面 [https://auth.openai.com/log-in](https://auth.openai.com/log-in)，登录 OpenAI 账号，也可以使用 Google 等第三方账号登录。
+
+![登录 OpenAI 账号](https://upload.maynor1024.live/file/1786695147115_09.png)
+
+2. 登录后进入 API Keys 页面，点击右上角的“Create new secret key”。
+
+![创建新的 OpenAI API Key](https://upload.maynor1024.live/file/1786695152081_10.png)
+
+3. 给 API Key 设置名称，然后点击“Create secret key”。
+
+![设置 API Key 名称](https://upload.maynor1024.live/file/1786695151608_11.png)
+
+4. 点击“Copy”复制 API Key，并妥善保存在本地密码管理工具中。关闭页面后将无法再次查看完整 Key，只能重新创建。确认保存后点击“Done”。
+
+![复制并保存 OpenAI API Key](https://upload.maynor1024.live/file/1786695157152_12.png)
+
+5. 返回 API Keys 页面可以看到刚刚创建的 Key。
+
+![查看已创建的 API Key](https://upload.maynor1024.live/file/1786695165874_13.png)
+
+6. 打开原版 Codex 桌面应用，点击“使用其他方式登录”（Sign in another way）。
+
+![在 Codex 中选择其他登录方式](https://upload.maynor1024.live/file/1786695166722_14.png)
+
+7. 在输入框中粘贴刚创建的 API Key，然后点击“继续”（Continue）。
+
+![在 Codex 中输入 API Key](https://upload.maynor1024.live/file/1786695163797_15.png)
+
+8. 登录成功后，点击 Codex 左下角的“设置”（Settings），可以看到“已通过 API 密钥登录”（Logged in with API key）。
+
+![确认 Codex 已通过 API Key 登录](https://upload.maynor1024.live/file/1786695175449_16.png)
+
+> API Key 属于敏感凭据，请勿发送给他人、上传到公开仓库或粘贴到不可信的网站。API 调用通常单独计费，不等同于 ChatGPT 订阅额度。
+
+## Codex 常见使用问题解答
+
+### 1. 如何查看 Windows 电脑是 ARM 架构还是 AMD64 架构？
+
+查看电脑架构有多种方法。最直观的方法是按下 `Win + R`，输入 `cmd` 并回车，在命令提示符中执行：
+
+```bat
+echo %PROCESSOR_ARCHITECTURE%
+```
+
+命令会返回 `AMD64`、`ARM64` 等系统架构信息。
+
+### 2. Codex 默认安装在 C 盘，如何移动到 D 盘？
+
+可以在安装前更改 Microsoft Store 应用的默认安装位置：按下 `Windows + I` 打开设置，进入“系统 → 存储 → 更改新内容的保存位置”，把“新的应用将保存到”从 C 盘改为 D 盘，然后再安装 Codex。
+
+如果已经安装，可以在 Windows 的“已安装的应用”页面中找到 Codex。系统支持时，打开应用的更多选项并选择“移动”，即可迁移到其他磁盘。
+
+### 3. Codex 能不能接入国内模型，例如 DeepSeek？
+
+OpenAI 官方客户端默认使用官方支持的模型和服务。一些第三方开源工具可以帮助管理兼容接口，例如：
+
+- CC-Switch：[https://github.com/farion1231/cc-switch](https://github.com/farion1231/cc-switch)
+- Codex++：[https://github.com/xianyu110/CodexPlusPlus](https://github.com/xianyu110/CodexPlusPlus)
+
+第三方接口的模型能力、数据留存、稳定性和计费规则由对应服务提供方负责。导入 API Key 前，应先核对项目来源和接口域名。
+
+### 4. 使用邮箱注册的 OpenAI 账号登录 Codex 时需要手机号怎么办？
+
+请优先按照 OpenAI 当前登录页面提供的验证方式完成账号认证。如果客户端提供“使用其他方式登录”，也可以根据界面提示选择当前账户支持的认证方式。API Key 与 ChatGPT 订阅是不同的计费和权限体系，使用前请确认账户余额与调用规则。
+
+## 总结
+
+随着 AI 编程工具不断发展，Codex 不仅能够辅助编写代码，还可以参与代码重构、Bug 修复、终端操作等开发流程，帮助开发者减少重复工作，提高开发效率。无论是个人学习、日常开发还是团队协作，Codex 都能够发挥 AI 编程智能体的优势，为开发工作提供支持。
+
+如果你正准备体验 AI 编程，可以从 Codex 开始。下载并完成安装后，再根据自己的使用习惯选择桌面应用、IDE 插件或 CLI，即可快速进入开发工作流。

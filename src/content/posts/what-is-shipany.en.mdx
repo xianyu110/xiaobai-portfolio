@@ -1,0 +1,38 @@
+export const meta = {
+  title: 'What is ShipAny Next',
+  description:
+    'ShipAny Next is a headless SaaS engine — auth, payments, subscriptions, credits, RBAC, and i18n pre-wired so you can focus on your product.',
+  created_at: '2026-05-20',
+  author_name: 'ShipAny Team',
+  author_image: '/logo.png',
+};
+
+ShipAny Next is a **headless SaaS engine**: pre-wired business logic with minimal UI. Instead of shipping yet another themed template, it gives you the machinery every SaaS needs — authentication, payments, subscriptions, a credit system, role-based access control, and internationalization — and stays out of the way of your product pages.
+
+## Why headless?
+
+Most SaaS boilerplates couple their business logic to a specific landing page design. The moment you rebrand, you fight the template. ShipAny Next splits the codebase along a different line:
+
+- **`src/components/`** — durable primitives. Pricing tables, headers, sidebars, shadcn/ui. These survive a rebrand.
+- **`src/blocks/`** — disposable page sections. They read your translations and wire content into the primitives. Rewrite them per project.
+- **`src/modules/`** — pure business logic. Payments, credits, subscriptions, RBAC. Each module is a standalone service file you can delete without breaking the others.
+
+## What's in the box
+
+1. **Authentication** — email/password and OAuth via better-auth, with session management and account linking.
+2. **Payments** — Stripe, PayPal, and Creem providers behind a single `PaymentManager` interface.
+3. **Credits** — FIFO consumption, expiration, auto-grant on signup, and revocation for usage-based billing.
+4. **RBAC** — roles and permissions with wildcard matching, plus a full admin panel.
+5. **Multi-database** — Drizzle ORM with PostgreSQL, MySQL, SQLite, Turso, and Cloudflare D1 support.
+6. **i18n** — English and Chinese built in, locale-aware routing via next-intl.
+
+## Getting started
+
+```bash
+pnpm install
+cp .env.example .env.development
+pnpm db:push
+pnpm dev
+```
+
+That's it — the engine runs on SQLite out of the box, and you can switch databases by changing one env var. Build your product on top, not the plumbing underneath.

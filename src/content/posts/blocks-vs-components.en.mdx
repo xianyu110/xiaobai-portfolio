@@ -1,0 +1,39 @@
+export const meta = {
+  title: 'Blocks vs Components: What Survives a Rebrand',
+  description:
+    'The core architectural split in ShipAny Next — disposable blocks read i18n and wire content, durable components render anything you feed them.',
+  created_at: '2026-05-28',
+  author_name: 'ShipAny Team',
+  author_image: '/logo.png',
+};
+
+Every template promises "easy customization," then makes you grep through twelve files to change a headline. ShipAny Next avoids that with one rule:
+
+> A file that reads translations is a **block**. A file that takes all content via props is a **component**.
+
+## Blocks are disposable
+
+Blocks live in `src/blocks/` and are zero-config page sections — `<Hero />`, `<Pricing />`, `<Footer />`. Each one reads i18n messages, builds a content config, and passes it to a component. They're the demo material: when you start a real project, you delete them and write your own.
+
+```tsx
+// src/blocks/header.tsx — a block: reads i18n, wires a component
+export async function Header() {
+  const t = await getTranslations('landing');
+  const navLinks = [{ href: '/#features', label: t('nav.features') }];
+  return <SiteHeader navLinks={navLinks} />;
+}
+```
+
+## Components are durable
+
+Components live in `src/components/` and never read translations. `SiteHeader`, `PricingTable`, `AppSidebar` — all content arrives via props. They don't know your app's name, your copy, or your locale. That's exactly why they survive every rebrand.
+
+## Why the split matters
+
+When you rebrand or start a new project from the template:
+
+1. **Keep** `src/components/*` — the chassis.
+2. **Rewrite** `src/blocks/*` — the content wiring.
+3. **Rewrite** the translation JSON files that feed the blocks.
+
+The page files themselves stay tiny — `page.tsx` is pure composition, a stack of blocks. Changing your entire landing page touches blocks and JSON, never the primitives. The split is not cosmetic; it's what makes customization a rewrite of intent instead of a fight with someone else's design decisions.

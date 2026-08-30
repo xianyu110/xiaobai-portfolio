@@ -1,0 +1,38 @@
+export const meta = {
+  title: '什么是 ShipAny Next',
+  description:
+    'ShipAny Next 是一个 Headless SaaS 引擎——认证、支付、订阅、积分、权限和国际化全部预置,让你专注于打造产品本身。',
+  created_at: '2026-05-20',
+  author_name: 'ShipAny 团队',
+  author_image: '/logo.png',
+};
+
+ShipAny Next 是一个 **Headless SaaS 引擎**:预置完整业务逻辑,UI 保持最小化。它不是又一个绑定特定主题的模板,而是把每个 SaaS 都需要的底层机制——认证、支付、订阅、积分系统、基于角色的权限控制和国际化——全部装配好,把产品页面的设计自由留给你。
+
+## 为什么是 Headless?
+
+大多数 SaaS 模板把业务逻辑和特定的落地页设计耦合在一起,一旦改版就要和模板搏斗。ShipAny Next 按另一条线切分代码:
+
+- **`src/components/`** — 耐用的基础组件。价格表、页头、侧边栏、shadcn/ui,改版换皮时它们保持不变。
+- **`src/blocks/`** — 可抛弃的页面区块。读取翻译文案,把内容装配进基础组件,每个项目都应该重写。
+- **`src/modules/`** — 纯业务逻辑。支付、积分、订阅、权限,每个模块都是独立的 service 文件,删掉任何一个都不影响其他模块。
+
+## 开箱即用的能力
+
+1. **认证** — 基于 better-auth 的邮箱密码和 OAuth 登录,带会话管理和账号关联。
+2. **支付** — Stripe、PayPal、Creem 多 Provider,统一在 `PaymentManager` 接口之后。
+3. **积分** — FIFO 消耗、过期、注册自动发放、撤销,支持按量计费。
+4. **权限** — 角色与权限通配符匹配,配套完整的管理后台。
+5. **多数据库** — Drizzle ORM,支持 PostgreSQL、MySQL、SQLite、Turso 和 Cloudflare D1。
+6. **国际化** — 内置中英双语,基于 next-intl 的语言感知路由。
+
+## 快速开始
+
+```bash
+pnpm install
+cp .env.example .env.development
+pnpm db:push
+pnpm dev
+```
+
+就这么简单——引擎默认跑在 SQLite 上,改一个环境变量即可切换数据库。把时间花在产品上,而不是底层管道上。

@@ -1,0 +1,40 @@
+// Cloudflare Workers deploy config — TEMPLATE.
+// The /deploy-cloudflare skill copies this to wrangler.jsonc (gitignored, your
+// working copy) and fills in the real values (D1 database_id, production URL).
+// `pnpm cf:build` (NITRO_PRESET=cloudflare_module) merges wrangler.jsonc into
+// the generated .output/server/wrangler.json; deploy with `pnpm cf:deploy`.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "shipany-tanstack",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+  },
+  "vars": {
+    "DATABASE_PROVIDER": "d1",
+    // Server-side runtime fallbacks for the build-time VITE_* values — keep in
+    // sync with .env.production (better-auth trustedOrigins, payment callbacks).
+    "VITE_APP_URL": "https://<worker>.<your-subdomain>.workers.dev",
+    "VITE_APP_NAME": "My App",
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "shipany-db",
+      "database_id": "REPLACE_WITH_OUTPUT_OF_WRANGLER_D1_CREATE",
+      "migrations_dir": "drizzle",
+    },
+  ],
+  // ── Postgres via Hyperdrive (instead of D1) ────────────────────────────────
+  // 1. npx wrangler hyperdrive create <name> --connection-string="postgres://..." (your direct PG url)
+  // 2. Set vars.DATABASE_PROVIDER to "postgresql" and remove the d1_databases block
+  // 3. Uncomment and fill the binding (the build keeps the postgres driver in
+  //    the bundle when DATABASE_PROVIDER=postgresql — see vite.config.ts):
+  // "hyperdrive": [
+  //   { "binding": "HYPERDRIVE", "id": "REPLACE_WITH_OUTPUT_OF_WRANGLER_HYPERDRIVE_CREATE" }
+  // ]
+  //
+  // Other optional bindings — uncomment when needed:
+  // "kv_namespaces":  [{ "binding": "CACHE",  "id": "..." }],
+  // "r2_buckets":     [{ "binding": "BUCKET", "bucket_name": "..." }]
+}
